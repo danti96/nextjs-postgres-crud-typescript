@@ -1,7 +1,8 @@
-import {NextApiRequest, NextApiResponse} from 'next'
+import { NextApiRequest, NextApiResponse } from 'next'
 
-export default function (req:NextApiRequest, res: NextApiResponse){
-    const {method} = req;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default function (req: NextApiRequest, res: NextApiResponse) {
+    const { method } = req;
     switch (method) {
         case "GET":
             return res.status(200).json("Getting a unique task");
@@ -12,5 +13,4 @@ export default function (req:NextApiRequest, res: NextApiResponse){
         default:
             return res.status(200).json("Method not allowed");
     }
-
 }
