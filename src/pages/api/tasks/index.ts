@@ -20,7 +20,13 @@ export default async function handler(
             return res.status(200).json(response.rows[0]);
 
         case "GET":
-            return res.status(200).json("Getting Tasks");
+            try {
+                const query = "SELECT * FROM tasks";
+                const response = await conn.query(query);
+                return res.status(200).json(response.rows);
+            } catch (error: any) {
+                return res.status(400).json({ error: error.message });
+            }
         default:
             return res.status(400).json("Invalid method");
     }
