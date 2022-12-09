@@ -21,7 +21,7 @@ export default async function handler(
 
         case "GET":
             try {
-                const query = "SELECT * FROM tasks";
+                const query = "SELECT * FROM tasks order by id desc";
                 const response = await conn.query(query);
                 return res.status(200).json(response.rows);
             } catch (error: any) {
