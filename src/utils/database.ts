@@ -4,11 +4,11 @@ let conn:any
 
 if(!conn)
     conn = new Pool({
-        user:'root',
-        password:'fXtWhF2xfwHTrjHrQNxATdmwdHPPqIc3',
-        host:'postgres://root:fXtWhF2xfwHTrjHrQNxATdmwdHPPqIc3@dpg-cee90d2rrk0c96hgdibg-a/pruebas_ackm',
+        host:'dpg-cee90d2rrk0c96hgdibg-a.oregon-postgres.render.com',
+        database: 'pruebas_ackm',
         port: 5432,
-        database: 'pruebas_ackm'
+        user: 'root',
+        password: 'fXtWhF2xfwHTrjHrQNxATdmwdHPPqIc3'
     });
 
 console.log(conn)
