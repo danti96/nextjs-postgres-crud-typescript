@@ -8,7 +8,8 @@ if(!conn)
         database: 'pruebas_ackm',
         port: 5432,
         user: 'root',
-        password: 'fXtWhF2xfwHTrjHrQNxATdmwdHPPqIc3'
+        password: 'fXtWhF2xfwHTrjHrQNxATdmwdHPPqIc3',
+        ssl: true
     });
 
 console.log(conn)
