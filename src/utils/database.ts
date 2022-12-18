@@ -1,15 +1,16 @@
-import {Pool} from 'pg'
+import { Pool } from 'pg'
 
-let conn:any
+let conn: any
 
-if(!conn)
+if (!conn)
     conn = new Pool({
-        user:'postgres',
-        password:'admin',
-        host:'localhost',
+        host: 'dpg-cee90d2rrk0c96hgdibg-a.oregon-postgres.render.com',
+        database: 'pruebas_ackm',
         port: 5432,
-        database: 'tasksdb'
+        user: 'root',
+        password: 'fXtWhF2xfwHTrjHrQNxATdmwdHPPqIc3',
+        ssl: true
     });
 
 console.log(conn)
-export {conn}
+export { conn }
