@@ -40,12 +40,14 @@ export default async function handler(
                     types,
                     vicinity,
                     website,
-                    adr_address
+                    adr_address,
+                    geocode,
+                    code_zip
                 } = req.body;
                 const resultado = await existsName(name);
 
                 if (!resultado) {
-                    const query = 'INSERT INTO mapapi (address, business_status, icon, icon_background_color, icon_mask_base_uri, lat, lng, name, place_id, plus_code_compound_code, plus_code_global_code, rating, telephone, tojson, types, vicinity, website,adr_address)VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18) RETURNING *';
+                    const query = 'INSERT INTO mapapi (address, business_status, icon, icon_background_color, icon_mask_base_uri, lat, lng, name, place_id, plus_code_compound_code, plus_code_global_code, rating, telephone, tojson, types, vicinity, website,adr_address,geocode)VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20) RETURNING *';
 
                     const values = [
                         address,
@@ -65,7 +67,9 @@ export default async function handler(
                         types,
                         vicinity,
                         website,
-                        adr_address
+                        adr_address,
+                        geocode,
+                        code_zip
                     ];
 
                     const response = await conn.query(query, values);
