@@ -1,12 +1,12 @@
 import { Tasks } from "src/interface/Tasks";
 
 interface Props {
-  tasks:Tasks[]
+  tasks: Tasks[]
 }
 
-export default function index({tasks}:Props){
+export default function index({ tasks }: Props) {
 
-  return  <>{tasks.length === 0? <h1>No Tasks</h1>: <h1>Tasks</h1>}</>;
+  return <>{tasks.length === 0 ? <h1>No Tasks</h1> : <h1>Tasks</h1>}</>;
 }
 
 export const getServerSideProps = async () => {
@@ -16,7 +16,7 @@ export const getServerSideProps = async () => {
   console.log(tasks)
 
   return ({
-    props:{
+    props: {
       tasks
     },
   });
