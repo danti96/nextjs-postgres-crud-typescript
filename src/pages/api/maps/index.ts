@@ -44,7 +44,7 @@ export default async function handler(
                     geocode,
                     code_zip
                 } = req.body;
-                const resultado = await existsName(name);
+                const resultado = await existsName(name,code_zip);
 
                 if (!resultado) {
                     const query = 'INSERT INTO mapapi (address, business_status, icon, icon_background_color, icon_mask_base_uri, lat, lng, name, place_id, plus_code_compound_code, plus_code_global_code, rating, telephone, tojson, types, vicinity, website, adr_address, geocode, code_zip)VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20) RETURNING *';
@@ -96,9 +96,10 @@ export default async function handler(
     }
 
 }
-async function existsName(nombre:string){
+
+async function existsName(nombre:string, code_zip:string){
     try {
-        const query = `SELECT * FROM mapapi where name='${nombre}'`;
+        const query = `SELECT * FROM mapapi where name='${nombre}' and code_zip='${code_zip}'`;
         const response = await conn.query(query);
         const nrows = response.rows.length;
         if (nrows > 0) {
