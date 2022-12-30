@@ -1,7 +1,20 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import { conn } from '../../../utils/database'
+// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { conn } from 'src/utils/database';
+import NextCors from 'nextjs-cors';
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async function (req: NextApiRequest, res: NextApiResponse) {
+    // Run the cors middleware
+    // nextjs-cors uses the cors package, so we invite you to check the documentation https://github.com/expressjs/cors
+    await NextCors(req, res, {
+        // Options
+        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        origin: '*',
+        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+        preflightContinue: false,
+    });
+
     const { method, query, body } = req;
 
     switch (method) {
