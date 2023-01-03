@@ -23,7 +23,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                 const text = "SELECT distinct(place_id), * FROM mapapi where code_zip = $1;"
                 const values = [query.id]
                 const result = await conn.query(text, values);
-
+                console.log("result", {text,result});
                 if (result.rows.length === 0)
                     return res.status(404).json({ message: "Task not found." });
 
