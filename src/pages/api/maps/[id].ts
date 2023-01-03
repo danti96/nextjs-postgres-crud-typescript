@@ -25,9 +25,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                 const result = await conn.query(text, values);
                 console.log("result", {text,result});
                 if (result.rows.length === 0)
-                    return res.status(404).json({ message: "Map place_id not found." });
+                    return res.status(404).json({ count: 0, message: "Map place_id not found." });
 
-                return res.status(200).json(result.rows);
+                return res.status(200).json({count: result.rows.length, rows:result.rows});
             } catch (error: any) {
                 return res.status(500).json({ message: error.message,query })
             }
